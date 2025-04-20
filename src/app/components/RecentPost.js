@@ -27,8 +27,6 @@ export default function RecentPosts() {
   const fetchRecentPosts = async () => {
     try {
 
-      console.log("HIIIIII");
-
       const res = await fetch(`/api/posts?count=3`);
       console.log(res)
       const posts = await res.json();

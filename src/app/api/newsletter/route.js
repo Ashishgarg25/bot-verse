@@ -15,8 +15,6 @@ export async function POST(request) {
             );
         }
 
-        console.log("client =====>", client.config())
-
         // Check if the email already exists in Sanity
         const existingSubscriber = await client.fetch(
             `*[_type == "subscriber" && email == $email][0]`,

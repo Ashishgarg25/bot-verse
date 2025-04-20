@@ -1,4 +1,5 @@
 import { createClient } from '@sanity/client'
+import ImageUrlBuilder from '@sanity/image-url';
 
 export const client = createClient({
   projectId: '1jgmb224',  // ✅ replace with your projectId
@@ -10,13 +11,19 @@ export const client = createClient({
 
 // Fetch Featured Posts
 export const fetchFeaturedPosts = async () => {
-    const query = `*[_type == "post" && isFeatured == true] | order(publishedAt desc) {
+  const query = `*[_type == "post" && isFeatured == true] | order(publishedAt desc) {
       _id,
       title,
       "slug": slug.current,
       publishedAt,
       "mainImage": mainImage.asset->url
     }`;
-  
-    return await client.fetch(query);
-  };
+
+  return await client.fetch(query);
+};
+
+const builder = ImageUrlBuilder(client);
+
+export function urlFor(source) {
+  return builder.image(source);
+}

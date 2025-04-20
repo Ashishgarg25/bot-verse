@@ -1,14 +1,35 @@
+import { urlFor } from "@/utils/sanity";
 import { PortableText } from "@portabletext/react";
 import moment from "moment";
 import Image from "next/image";
 import Link from "next/link";
 
 export default function Content({ post }) {
+
+    const components = {
+        types: {
+          image: ({ value }) => {
+            const imageUrl = urlFor(value).width(800).url();
+
+            return (
+              <div className="my-4">
+                <Image
+                  src={imageUrl}
+                  alt={'Sanity Image'}
+                  width={800}
+                  height={600}
+                  className="rounded"
+                />
+              </div>
+            );
+          },
+        },
+      };
+
     return (
         <div className="w-full xl:max-w-[770px]">
             {/* Blog Hero Image */}
             <div className="mb-10 h-[400px]">
-                {console.log("iggg ===", post)}
                 <Image
                     alt={post.title}
                     src={post.mainImage}
@@ -49,7 +70,7 @@ export default function Content({ post }) {
 
             {/* Blog Content */}
             <div className="blog-details blog-details-three mt-9 space-y-6">
-                <PortableText value={post.body} />
+                <PortableText value={post.body} components={components} />
             </div>
 
             {/* Tags and Share */}
