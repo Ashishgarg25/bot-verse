@@ -14,6 +14,9 @@ const inter = Inter({
 export const metadata = {
   title: 'Bot Verse',
   description: "We explore the latest and most fascinating AI tools, platforms, and breakthroughs. Whether you're an AI enthusiast, curious beginner, or digital explorer, BotVerse breaks it all down in simple, engaging, and insightful content.",
+  icons: {
+    icon: '/images/favicon.ico',
+  },
 };
 
 const Layout = ({ children }) => {

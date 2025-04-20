@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { PortableText } from '@portabletext/react'
+import Link from "next/link";
 
 export default function SearchModal({
     isOpen,
@@ -59,7 +60,7 @@ export default function SearchModal({
                                             {posts?.map((post, index) => (
                                                 <li key={index} className="ais-Hits-item" style={{ borderBottom: "1px solid", borderColor: '#efefef' }}>
                                                     <div className="cursor-pointer px-4 py-3.5 duration-300 ease-in hover:bg-gray-100 lg:px-7">
-                                                        <a href={`/post/${post.slug.current}`} className="flex flex-row items-start">
+                                                        <Link href={`/post/${post.slug.current}`} className="flex flex-row items-start">
                                                             <Image
                                                                 src={post.mainImage}
                                                                 alt={post.title}
@@ -74,7 +75,7 @@ export default function SearchModal({
                                                                     <PortableText value={post.body.slice(0, 2)} />
                                                                 </div>
                                                             </div>
-                                                        </a>
+                                                        </Link>
                                                     </div>
                                                 </li>
                                             ))}
