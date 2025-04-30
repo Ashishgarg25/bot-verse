@@ -47,7 +47,7 @@ const Header = () => {
         <header className="header fixed left-0 top-0 z-9999 w-full bg-white py-7 transition-all duration-300 ease-in-out lg:py-0 false">
             <div className="navigation relative mx-auto max-w-[1170px] items-center justify-between px-4 sm:px-8 lg:flex xl:px-0 ">
                 <div className="flex w-full items-center justify-between lg:w-9/12">
-                    <Link href="/"><img alt="Logo" loading="lazy" width="54" height="30" decoding="async" data-nimg="1" src="/images/logo.png" style={{ color: 'transparent' }} /></Link>
+                    <Link href="/"><img alt="Logo" loading="lazy" width="150" height="80" decoding="async" data-nimg="1" src="/images/logo.png" style={{ color: 'transparent' }} /></Link>
                 </div>
                 <div className=" invisible h-0 w-full items-center justify-end lg:visible lg:flex lg:h-auto lg:w-3/12 false">
                     <div className="mt-7 flex flex-col flex-wrap gap-8.5 lg:mt-0 lg:flex-row lg:items-center">
