@@ -19,7 +19,7 @@ export async function GET() {
 
     // Fetch blog posts or other content types if you have them
     const posts = await client.fetch(groq`
-      *[_type == "post"] {
+      *[_type == "blog"] {
         "slug": slug.current,
         _updatedAt
       }
@@ -40,7 +40,7 @@ export async function GET() {
     `;
 
     // Add static pages (add more as needed)
-    const staticPages = ['/about', '/contact'];
+    const staticPages = ['/about'];
     
     staticPages.forEach(page => {
       xml += `
@@ -57,7 +57,7 @@ export async function GET() {
     pages.forEach(page => {
       xml += `
         <url>
-          <loc>${baseUrl}/pages/${page.slug}</loc>
+          <loc>${baseUrl}/${page.slug}</loc>
           <lastmod>${new Date(page._updatedAt).toISOString()}</lastmod>
           <changefreq>weekly</changefreq>
           <priority>0.7</priority>
@@ -69,7 +69,7 @@ export async function GET() {
     posts.forEach(post => {
       xml += `
         <url>
-          <loc>${baseUrl}/blog/${post.slug}</loc>
+          <loc>${baseUrl}/post/${post.slug}</loc>
           <lastmod>${new Date(post._updatedAt).toISOString()}</lastmod>
           <changefreq>monthly</changefreq>
           <priority>0.6</priority>
