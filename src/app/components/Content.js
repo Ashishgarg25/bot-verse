@@ -7,24 +7,40 @@ import Link from "next/link";
 export default function Content({ post }) {
 
     const components = {
-        types: {
-          image: ({ value }) => {
-            const imageUrl = urlFor(value).width(800).url();
-
-            return (
-              <div className="my-4">
-                <Image
-                  src={imageUrl}
-                  alt={'Sanity Image'}
-                  width={800}
-                  height={600}
-                  className="rounded"
-                />
-              </div>
-            );
-          },
+        marks: {
+            link: ({ value, children }) => {
+                const { href } = value;
+                return (
+                    <a href={href} className="text-purple-dark underline">
+                        {children}
+                    </a>
+                );
+            }
         },
-      };
+        block: {
+            h3: ({ children }) => {
+                return <h3 className="text-xl font-semibold"
+                    style={{ marginBottom: '0.5rem' }}>{children}</h3>;
+            },
+        },
+        types: {
+            image: ({ value }) => {
+                const imageUrl = urlFor(value).width(800).url();
+
+                return (
+                    <div className="my-4">
+                        <Image
+                            src={imageUrl}
+                            alt={'Sanity Image'}
+                            width={800}
+                            height={600}
+                            className="rounded"
+                        />
+                    </div>
+                );
+            },
+        },
+    };
 
     return (
         <div className="w-full xl:max-w-[770px]">
