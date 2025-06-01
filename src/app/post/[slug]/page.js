@@ -53,7 +53,6 @@ export default function PostDetails({ params }) {
                         <Sidebar />
                     </div>
                 </div>
-
             </div>
         </section>
     )

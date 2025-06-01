@@ -35,7 +35,6 @@ const Header = () => {
             const response = await fetch(`/api/search?query=${encodeURIComponent(term)}`);
             if (!response.ok) throw new Error('Failed to fetch');
             const data = await response.json();
-            console.log("Search response:", data);
             setPosts(data.posts || []);
         } catch (error) {
             console.error("Error fetching posts:", error);

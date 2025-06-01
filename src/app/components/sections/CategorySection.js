@@ -10,7 +10,6 @@ const CategorySection = ({ posts }) => {
 
     // Get unique tags from posts
     const tags = Array.from(new Set(posts.flatMap(post => post.tags))) || [];
-    console.log(posts)
     const topTags = ['All', ...tags.slice(0, 5)]; // Include 'All' and top 5 tags
 
     // Filter posts based on the selected tag
@@ -80,7 +79,7 @@ const CategorySection = ({ posts }) => {
                                 <p
                                     className="inline-flex rounded-full bg-blue/[0.08] px-3 py-1 text-sm font-medium capitalize text-blue"
                                 >
-                                    {post.tags[0]}
+                                    {post && post?.tags?.length > 0 && post?.tags[0]}
                                 </p>
                             </div>
                         </Link>
