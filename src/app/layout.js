@@ -20,6 +20,9 @@ export const metadata = {
   icons: {
     icon: '/images/favicon.ico',
   },
+  alternates: {
+      canonical: `https://www.bot-verse.online`,
+    },
 };
 
 const Layout = ({ children }) => {

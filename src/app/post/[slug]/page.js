@@ -6,6 +6,7 @@ import { client } from '@/utils/sanity';
 import Content from "../../components/Content";
 import Sidebar from "../../components/Sidebar";
 import Loading from './loading';
+import Head from 'next/head';
 
 export default function PostDetails({ params }) {
 
@@ -37,12 +38,18 @@ export default function PostDetails({ params }) {
       fetchPost();
     }
   }, [slug]);
+
+  const canonicalUrl = `https://www.bot-verse.online/post/${slug}`;
   
   if (error) return <div className="text-red-500 p-10">{error}</div>;
   if (!post) return <div className="p-10"><Loading /></div>;
 
 
     return (
+        <>
+        <Head>
+          <link rel="canonical" href={canonicalUrl} />
+        </Head>
         <section className="pb-17.5 pt-34">
             <div className="mx-auto max-w-[1170px] px-4 sm:px-8 xl:px-0">
                 <div className="flex flex-wrap gap-7.5">
@@ -55,5 +62,6 @@ export default function PostDetails({ params }) {
                 </div>
             </div>
         </section>
+        </>
     )
 }
